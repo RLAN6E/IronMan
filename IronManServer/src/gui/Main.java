@@ -3,7 +3,7 @@ package gui;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
-import parts_Arm.*;
+import parts.*;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;

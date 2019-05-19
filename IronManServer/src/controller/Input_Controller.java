@@ -1,24 +1,19 @@
-package gui;
+package controller;
 
 import java.net.SocketException;
 import java.util.Scanner;
 
 import basic_operators.LengthFixedVector;
-import basic_operators.Vector;
+import parts_Arm.*;
 import networking.*;
-import parts.*;
+import parts.Part;
 
+public class Input_Controller extends Thread {
 
-public class Input extends Thread {
-
-	Main main;
-	Arm arm;
 	Admin admin;
-	
+	Main_Controller mainController;
 
-	public Input(Main m, Arm aA) {
-		main = m;
-		arm = aA;
+	public Input_Controller() {
 		try {
 			admin = new Admin();
 		} catch (SocketException e) {
@@ -39,20 +34,20 @@ public class Input extends Thread {
 	public void workWithInput(Arm aArm, double startX, double startY) throws Exception {
 		LengthFixedVector usedV;
 		String[] input = admin.scan();
-		
+
 		switch (input[0]) {
 
 		case "1":
-			usedV = aArm.getUpperArm().getVector();
+			usedV = aArm.getUpperArm();
 			break;
 		case "2":
-			usedV = aArm.getForeArm().getVector();
+			usedV = aArm.getForeArm();
 			break;
 		case "3":
-			usedV = aArm.getHand().getVector();
+			usedV = aArm.getHand();
 			break;
 		default:
-			usedV = aArm.getUpperArm().getVector();
+			usedV = aArm.getUpperArm();
 		}
 
 		switch (input[1]) {
@@ -70,12 +65,42 @@ public class Input extends Thread {
 
 	}
 
-	public String[] scanInput() {
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
-		String inpt = scanner.nextLine();
+	public void decrypInput(String inpt) {
+		Part originPart;
+		
 		String[] inputs = inpt.split("/");
-		return inputs;
+		
+		String talkingPart = inputs[0];
+		
+		String command = inputs[1];
+		String subPart = inputs[2];
+		String axis = inputs[3];
+		double value = Double.parseDouble(inputs[4]);
+
+		switch (talkingPart) {
+		case "leftArm":
+			originPart = mainController.getLeftArm();
+			break;
+		case "rightArm":
+			originPart = mainController.getRightArm();
+			break;
+			
+		default: originPart = mainController.getRightArm(); break;
+		}
+		
+		
+		
+		
+		
+		
+		switch(command) {
+		case "moveCoordiate"
+		
+		
+		}
+		
+		
+
 	}
 
 }

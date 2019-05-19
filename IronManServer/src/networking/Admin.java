@@ -9,7 +9,7 @@ public class Admin extends Thread{
 
 	
 	public Admin() throws SocketException {
-		 serverSocket = new DatagramSocket(53172);
+		 serverSocket = new DatagramSocket(50505);
 		 
 		
 	}

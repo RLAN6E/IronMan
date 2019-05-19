@@ -49,8 +49,9 @@ public class LengthFixedVector extends Vector {
 		}
 	}
 
-	public void moveZ(double xTarget) {
-
+	public void angle(double angleX, double angleY) {
+		
 	}
+	
 
 }
