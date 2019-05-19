@@ -1,32 +1,44 @@
 package gui;
 
+import java.net.SocketException;
 import java.util.Scanner;
 
 import basic_operators.LengthFixedVector;
-import basic_operators.Vector;
-import javafx.scene.layout.Pane;
 import parts_Arm.*;
+import networking.*;
+
 
 public class Input extends Thread {
 
 	Main main;
 	Arm arm;
+	Admin admin;
+	
 
 	public Input(Main m, Arm aA) {
 		main = m;
 		arm = aA;
-
+		try {
+			admin = new Admin();
+		} catch (SocketException e) {
+			System.out.println("Socketproblem");
+		}
 	}
 
 	public void run() {
 		while (true) {
-			workWithInput(arm, 100, 100);
+			try {
+				workWithInput(arm, 100, 100);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
-	public void workWithInput(Arm aArm, double startX, double startY) {
+	public void workWithInput(Arm aArm, double startX, double startY) throws Exception {
 		LengthFixedVector usedV;
-		String[] input = this.scanInput();
+		String[] input = admin.scan();
 		switch (input[0]) {
 
 		case "1":
