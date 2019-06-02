@@ -21,7 +21,6 @@ public class GUI_Controller extends Application {
 		
 		
 		Parent root = FXMLLoader.load(getClass().getResource("GUI_FILES/gui.fxml"));
-		textarea= cons
 		Scene scene = new Scene(root);
 		
 		primaryStage.initStyle(StageStyle.UNDECORATED);

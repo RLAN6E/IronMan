@@ -29,5 +29,4 @@ public class Input_Controller extends Thread {
 			}
 		}
 	}
-
 }
