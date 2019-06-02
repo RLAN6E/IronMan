@@ -1,6 +1,6 @@
 package basic_operators;
 
-public class NullVector extends Vector {
+public class  extends Vector {
 
 	
 	

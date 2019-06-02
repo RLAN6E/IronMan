@@ -1,11 +1,12 @@
 package parts;
 
+import basic_operators.Point;
 import basic_operators.Vector;
 
 public class Hand extends ArmPart{
 
-	public Hand(double l, Vector baseV, int dimension) {
-		super(l, baseV, dimension);
+	public Hand(double l, Point base, int dimension) {
+		super(l, base, dimension);
 	}
 
 }

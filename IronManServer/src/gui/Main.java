@@ -4,9 +4,11 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import parts.*;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 
 public class Main extends Application {
@@ -15,8 +17,9 @@ public class Main extends Application {
 	Line upperArm;
 	Line foreArm;
 	Line hand;
+	Circle endPoint;
 
-	Pane root;
+	Group root;
 	Scene scene;
 	Stage stage;
 
@@ -26,33 +29,35 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 
 		stage = primaryStage;
+		stage.setTitle("A.R.C MK0.0");
+		
+		
 		leftArm = new Arm(400, 300, 190);
+		
+		Input inpt = new Input(this, leftArm);
+		inpt.start();
+		root = new Group();
 
-		try {
-			Input inpt = new Input(this, leftArm);
+		upperArm = new Line();
+		foreArm = new Line();
+		hand = new Line();
+		endPoint = new Circle();
 
-			inpt.start();
-			root = new Pane();
+		upperArm.setStroke(Color.RED);
+		upperArm.setStrokeWidth(5);
 
-			upperArm = new Line();
-			foreArm = new Line();
-			hand = new Line();
+		foreArm.setStroke(Color.GREEN);
+		foreArm.setStrokeWidth(5);
 
-			upperArm.setStroke(Color.RED);
-			upperArm.setStrokeWidth(5);
+		hand.setStroke(Color.BLUE);
+		hand.setStrokeWidth(5);
+		
+		endPoint.setRadius(10);
+		endPoint.setStroke(Color.ORANGERED);
+		endPoint.setStrokeWidth(5);
 
-			foreArm.setStroke(Color.GREEN);
-			foreArm.setStrokeWidth(5);
-
-			hand.setStroke(Color.BLUE);
-			hand.setStrokeWidth(5);
-
-			run();
-			root.getChildren().addAll(upperArm, foreArm, hand);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		run();
+		root.getChildren().addAll(upperArm, foreArm, hand,endPoint);
 	}
 
 	public static void main(String[] args) {
@@ -61,7 +66,7 @@ public class Main extends Application {
 
 	public void run() {
 		drawArm(leftArm, 100, 100);
-		scene = new Scene(root, 1000, 1000);
+		scene = new Scene(root, 1000, 1000,true);
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -104,6 +109,9 @@ public class Main extends Application {
 		hand.setStartY(endForeArmY);
 		hand.setEndX(endHandX);
 		hand.setEndY(endHandY);
+		
+		endPoint.setCenterX(endHandX);
+		endPoint.setCenterY(endHandY);
 
 		System.out.println("drawn");
 	}

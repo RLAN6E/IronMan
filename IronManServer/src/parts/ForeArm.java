@@ -4,8 +4,8 @@ import basic_operators.*;
 
 public class ForeArm extends ArmPart{
 
-	public ForeArm(double l, Vector baseV, int dimension) {
-		super(l, baseV, dimension);
+	public ForeArm(double l, Point base, int dimension) {
+		super(l, base, dimension);
 		
 	}
 	

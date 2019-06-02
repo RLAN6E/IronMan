@@ -1,11 +1,12 @@
 package parts;
 
+import basic_operators.Point;
 import basic_operators.Vector;
 
 public class UpperArm extends ArmPart{
 
-	public UpperArm(double l, Vector baseV, int dimension) {
-		super(l, baseV, dimension);
+	public UpperArm(double l, Point base, int dimension) {
+		super(l, base, dimension);
 	}
 
 }

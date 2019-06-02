@@ -36,9 +36,15 @@ public class Input extends Thread {
 		}
 	}
 
-	public void workWithInput(Arm aArm, double startX, double startY) throws Exception {
+	public void workWithInput(Arm aArm, double startX, double startY){
 		LengthFixedVector usedV;
-		String[] input = admin.scan();
+		String[] input;
+		try {
+			input = admin.scan();
+		} catch (Exception e) {
+			e.printStackTrace();
+			input = null;
+		}
 		
 		switch (input[0]) {
 
@@ -69,13 +75,4 @@ public class Input extends Thread {
 		main.refresh();
 
 	}
-
-	public String[] scanInput() {
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
-		String inpt = scanner.nextLine();
-		String[] inputs = inpt.split("/");
-		return inputs;
-	}
-
 }

@@ -4,39 +4,55 @@ public class Vector {
 
 	protected double[] coords;
 	private int dimension;
-	private Vector ortV;
+	private Point base;
 
 	// CONSTRUCTORS
-	public Vector(Vector oV, double... aCoords) {
+	public Vector(Point p, double... aCoords) {
 		coords = aCoords;
 		dimension = coords.length;
 
-		if (oV == null) {
-			ortV = new NullVector();
+		if (p == null) {
+			base = new Point(3);
 		} else {
-			ortV = oV;
+			base = p;
 		}
 	}
 
-	public Vector(Vector oV, double length, int dim) {
+	public Vector(Point p, double length, int dim) {
 		coords = new double[dim];
 		dimension = dim;
-		coords[1] = length;
-		if (oV == null) {
-			ortV = new NullVector();
+		coords[0] = length;
+		if (p == null) {
+			base = new Point(3);
 		} else {
-			ortV = oV;
+			base = p;
 		}
 	}
-	
+
+	public Vector(Point p, Point p1, Point p2) {
+		if (p == null) {
+			base = new Point(3);
+		} else {
+			base = p;
+		}
+
+		dimension = 3;
+		coords = new double[3];
+
+		coords[0] = p1.getCorrd(0) - p2.getCorrd(0);
+		coords[1] = p1.getCorrd(1) - p2.getCorrd(1);
+		coords[2] = p1.getCorrd(2) - p2.getCorrd(2);
+
+	}
+
 	public Vector() {
-		
+
 	}
 
 	// GETTER
 	public Point getBase() {
 
-		return ortV.getEndpoint();
+		return base;
 
 	}
 
@@ -77,17 +93,23 @@ public class Vector {
 
 	public void setX(double x) {
 		coords[0] = x;
-		computeLength();
+
 	}
 
 	public void setY(double y) {
 		coords[1] = y;
-		computeLength();
+
 	}
 
 	public void setZ(double z) {
 		coords[2] = z;
-		computeLength();
+
+	}
+
+	public void setCoords(double aX, double aY, double aZ) {
+		coords[0] = aX;
+		coords[1] = aY;
+		coords[2] = aZ;
 	}
 
 }

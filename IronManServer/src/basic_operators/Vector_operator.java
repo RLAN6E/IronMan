@@ -1,6 +1,6 @@
 package basic_operators;
 
-public class Vector_operator {
+public final class Vector_operator {
 
 	public Vector_operator() {
 
@@ -40,7 +40,7 @@ public class Vector_operator {
 		for (int i = 0; i < counter; i++) {
 			coordsNV[i] = v1.getCoordAt(i) + v2.getCoordAt(i);
 		}
-		return new Vector(v1, coordsNV);
+		return new Vector(v1.getEndpoint(), coordsNV);
 	}
 
 	public Vector crossP(Vector v1, Vector v2) {
@@ -60,12 +60,21 @@ public class Vector_operator {
 			coordsNV[1] = (a3 * b1) - (a1 * b3);
 			coordsNV[2] = (a1 * b2) - (a2 * b1);
 
-			return new Vector(v1, coordsNV);
+			return new Vector(v1.getBase(), coordsNV);
 		}
 	}
 
 	public double angle(Vector v1, Vector v2) {
 		return Math.acos((this.scalar(v1, v2)) / (v1.computeLength() * v2.computeLength()));
+	}
+	
+	public Vector multiply(Vector v, double scale) {
+		double x= v.getCoordAt(0)*scale;
+		double y= v.getCoordAt(1)*scale;
+		double z= v.getCoordAt(2)*scale;
+		
+		return new Vector(v.getBase(),x,y,z);
+		
 	}
 
 }

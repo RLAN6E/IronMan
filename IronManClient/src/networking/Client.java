@@ -9,7 +9,7 @@ public class Client {
 	
 	public Client() throws Exception {
 		 clientSocket = new DatagramSocket();
-		 IPAddress = InetAddress.getByName("80.129.41.94");
+		 IPAddress = InetAddress.getByName("192.168.2.108");
 		 
 	}
 

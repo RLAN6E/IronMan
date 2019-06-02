@@ -1,12 +1,10 @@
 package networking;
 
-import java.io.*;
 import java.net.*;
 
 public class Admin extends Thread{
 	DatagramSocket serverSocket;
 	byte[] receiveData;
-
 	
 	public Admin() throws SocketException {
 		 serverSocket = new DatagramSocket(50505);
@@ -24,10 +22,7 @@ public class Admin extends Thread{
 			
 			String data = new String(receivePacket.getData());
 			System.out.println("RECEIVED: " + data);
-			
-			//InetAddress IPAddress = receivePacket.getAddress();
-			//int port = receivePacket.getPort();
-			
+
 			String[] dates = data.split("/");
 			return dates;
 		}

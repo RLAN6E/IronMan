@@ -1,25 +1,20 @@
 package controller;
 
 import parts.Arm;
-import parts.Part;
+
 
 public class Main_Controller {
+	
 	
 	Arm leftArm;
 	Arm rightArm;
 	
-	public Main_Controller() {
+	public static void main(String[] args) {
+		GUI_Controller guiC= new GUI_Controller();
+		guiC.goRun();
+		
 		
 	}
-	
-	public Part getLeftArm() {
-		return leftArm;
-	}
-	
-	public Part getRightArm() {
-		return rightArm;
-	}
-	
 	
 
 }

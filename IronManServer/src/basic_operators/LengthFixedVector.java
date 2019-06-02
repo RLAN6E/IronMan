@@ -4,8 +4,8 @@ public class LengthFixedVector extends Vector {
 
 	private double length;
 
-	public LengthFixedVector(Vector oV, double l, int dim) {
-		super(oV, l, dim);
+	public LengthFixedVector(Point p, double l, int dim) {
+		super(p, l, dim);
 
 		length = l;
 	}
@@ -15,7 +15,7 @@ public class LengthFixedVector extends Vector {
 	}
 
 	// MOVER
-
+/*
 	public void moveX(double xTarget) {
 		
 		double dX = Math.abs(xTarget - coords[0]);
@@ -48,10 +48,5 @@ public class LengthFixedVector extends Vector {
 			System.out.println("ERROR<2>");
 		}
 	}
-
-	public void angle(double angleX, double angleY) {
-		
-	}
-	
-
+	*/
 }

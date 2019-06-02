@@ -8,11 +8,15 @@ public abstract class ArmPart {
 
 	LengthFixedVector description;
 
-	final double length;
+	private final double length;
 
-	public ArmPart(double l,Vector baseV,int dimension) {
+	public ArmPart(double l,Point base,int dimension) {
 		length = l;
-		description= new LengthFixedVector(baseV, length, dimension);
+		description= new LengthFixedVector(base, length, dimension);
+	}
+	
+	public ArmPart() {
+		length =0;
 	}
 
 	public double getLength() {
